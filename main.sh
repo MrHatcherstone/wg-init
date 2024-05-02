@@ -118,7 +118,7 @@ userAdd() {
 	if [ ! -d ${conf_dir} ]; then
 		mkdir -p ${conf_dir}
 	fi
-	printf "\n#${pref}\n[Interface]PrivateKey = $(cat ${client_private_path})\nListenPort = ${ListenPort}\nAddress = ${mask}${max_number}/24\nDNS = ${DNS}\n\n[Peer]\nPublicKey = $(cat ${server_pub_path})\nAllowedIPs = ${mask}0/24\nEndpoint = ${public_add}:${ListenPort}\n\n" > ${conf_dir}${pref}.conf
+	printf "\n#${pref}\n[Interface]\nPrivateKey = $(cat ${client_private_path})\nListenPort = ${ListenPort}\nAddress = ${mask}${max_number}/24\nDNS = ${DNS}\n\n[Peer]\nPublicKey = $(cat ${server_pub_path})\nAllowedIPs = ${mask}0/24\nEndpoint = ${public_add}:${ListenPort}\n\n" > ${conf_dir}${pref}.conf
 }
 
 # Check arg
