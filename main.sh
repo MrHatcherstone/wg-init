@@ -1,11 +1,6 @@
 #!/bin/bash
-# Client to add
-pref="bla_bla"
-# Server public key
-server_pub_path="${wg_dir}/server_publickey"
-# Public IP / domain - Past your domain if needed
-# 
 
+# Read env data
 readEnv() {
 	# Путь к вашему файлу
 	env_file=./env
@@ -97,6 +92,7 @@ init() {
 	fi
 }
 
+#  Add user
 userAdd() {
 	printf "\nAdd user ${pref}\n"
 	# Check private and public key for client
@@ -125,7 +121,7 @@ userAdd() {
 	printf "\n#${pref}\n[Interface]PrivateKey = $(cat ${client_private_path})\nListenPort = ${ListenPort}\nAddress = ${mask}${max_number}/24\nDNS = ${DNS}\n\n[Peer]\nPublicKey = $(cat ${server_pub_path})\nAllowedIPs = ${mask}0/24\nEndpoint = ${public_add}:${ListenPort}\n\n" > ${conf_dir}${pref}.conf
 }
 
-# Проверка, если первый аргумент равен "init"
+# Check arg
 if [ "${1}" = "--init" ]; then
 	readEnv
     init
@@ -134,6 +130,10 @@ if [ "${1}" = "--init" ]; then
 	exit 0
 elif [ "${1}" = "--addUser" ]; then
     pref=${2}
+	if [ -z "${pref}" ]; then
+		printf "No name specified\n"
+		exit 1
+	fi
 	readEnv
 	userAdd
 	printf "User add done\n"
