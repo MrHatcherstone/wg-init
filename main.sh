@@ -130,11 +130,16 @@ if [ "${1}" = "--init" ]; then
 	readEnv
     init
 	printf "Init done\n"
+	systemctl restart wg-quick@wg0.service
 	exit 0
 elif [ "${1}" = "--addUser" ]; then
     pref=${2}
 	readEnv
 	userAdd
 	printf "User add done\n"
+	systemctl restart wg-quick@wg0.service
 	exit 0
+else
+	printf "Unknown key\n"
+	exit 1
 fi
