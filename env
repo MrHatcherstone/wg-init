@@ -1,0 +1,12 @@
+# Remove all comments before running the script
+# WG conf dir - /etc/wireguard, if empty or not included in env file
+wg_dir=/etc/wireguard
+# WG network - `10.0.8.` (dot in the end is necessary), if empty or not included in env file
+mask=10.0.8.
+# Server public and private key name, located in the wg_dir - server_publickey and server_privatekey, if empty or not included in env file
+server_pub_name=server_publickey
+server_priv_name=server_privatekey
+# WG port - 51820, if empty or not included in env file
+ListenPort=51820
+# DNS for clients - 8.8.8.8, if empty or not included in env file
+DNS=8.8.8.8
