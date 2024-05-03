@@ -52,7 +52,8 @@ After you can find user config in:
 ```bash
 root May 3 2:12 /etc/wireguard > cat /etc/wireguard/conf/Newuser.conf
 #Newuser
-[Interface]PrivateKey = <you will see client private key here>
+[Interface]
+PrivateKey = <you will see client private key here>
 ListenPort = 51820 # Could be changed in env file
 Address = <you will see wg ip for client here>
 DNS = 8.8.8.8
