@@ -123,11 +123,11 @@ userAdd() {
 
 # Check arg
 if [ "${1}" = "--init" ]; then
-	readEnv
+    readEnv
     init
-	printf "Init done\n"
-	systemctl restart wg-quick@wg0.service
-	exit 0
+    printf "Init done\n"
+    systemctl restart wg-quick@wg0.service
+    exit 0
 elif [ "${1}" = "--addUser" ]; then
     pref=${2}
 	if [ -z "${pref}" ]; then
